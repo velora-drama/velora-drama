@@ -12,3 +12,66 @@
 :root {
   color-scheme: dark;
 }
+/* VELORA — luxury visual update */
+:root {
+  --bg: #0c080e;
+  --panel: #171019;
+  --panel2: #251624;
+  --accent: #f0b3c7;
+  --accent2: #b76a89;
+  --gold: #efd5a2;
+}
+
+body {
+  background:
+    radial-gradient(ellipse at 50% -15%, #51263e 0, transparent 45%),
+    radial-gradient(ellipse at 100% 45%, #251128 0, transparent 35%),
+    var(--bg);
+}
+
+.topbar {
+  background: rgba(12, 8, 14, 0.82);
+  border-bottom-color: #f0b3c71c;
+  box-shadow: 0 8px 35px #0002;
+}
+
+.brand-mark {
+  box-shadow: 0 0 22px #f0b3c729;
+}
+
+.primary-btn {
+  background: linear-gradient(120deg, #f7d5df, #d98da9);
+  box-shadow: 0 8px 35px #d98da933;
+}
+
+.poster {
+  border-color: #f0b3c722;
+  box-shadow: 0 8px 24px #0003;
+}
+
+.poster:hover {
+  border-color: #f0b3c777;
+}
+
+.creator-panel {
+  background: linear-gradient(145deg, #211522, #130d16);
+  box-shadow: 0 20px 70px #0003;
+  border-color: #f0b3c722;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .poster {
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease,
+      border-color 0.25s ease;
+  }
+
+  .primary-btn {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .primary-btn:hover {
+    box-shadow: 0 12px 40px #d98da955;
+  }
+}
