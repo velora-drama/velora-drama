@@ -75,3 +75,78 @@ body {
     box-shadow: 0 12px 40px #d98da955;
   }
 }
+/* VELORA — luxury day & night themes */
+
+.theme-toggle {
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #efd5a255;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #2b1b30, #171019);
+  color: #efd5a2;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 0 18px #d98da922;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: rotate(18deg) scale(1.08);
+  box-shadow: 0 0 24px #d98da966;
+}
+
+/* Pearly luxury day theme */
+
+body[data-theme="day"] {
+  color-scheme: light;
+  --bg: #fbf5f6;
+  --panel: #fffafb;
+  --panel2: #f2e5f0;
+  --accent: #bd789b;
+  --accent2: #9876b5;
+  --gold: #b79555;
+
+  background:
+    radial-gradient(ellipse at 10% 0%, #f5dce8 0, transparent 42%),
+    radial-gradient(ellipse at 100% 30%, #e9e0f5 0, transparent 38%),
+    #fbf5f6;
+
+  color: #38283b;
+}
+
+body[data-theme="day"] .topbar {
+  background: rgba(255, 250, 252, 0.9);
+  border-bottom: 1px solid #d9bfd4;
+  box-shadow: 0 8px 30px #8c668b18;
+}
+
+body[data-theme="day"] .theme-toggle {
+  background: linear-gradient(145deg, #fff8dc, #f5d8e8);
+  border-color: #d8b878;
+  box-shadow: 0 0 18px #d8b87833;
+}
+
+body[data-theme="day"] .creator-panel {
+  background: linear-gradient(145deg, #fffafd, #f0e5f2);
+  border-color: #dfc9df;
+  box-shadow: 0 20px 60px #8c668b18;
+}
+
+body[data-theme="day"] .poster {
+  border-color: #ddc4d9;
+  box-shadow: 0 8px 24px #8c668b20;
+}
+
+body[data-theme="day"] .poster:hover {
+  border-color: #bd789b;
+  box-shadow: 0 10px 30px #bd789b30;
+}
+
+body[data-theme="day"] .primary-btn {
+  background: linear-gradient(120deg, #f3d5e5, #d8b8e8);
+  color: #39243c;
+  box-shadow: 0 8px 28px #bd789b30;
+}
