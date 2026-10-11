@@ -131,3 +131,37 @@ $("dramaForm").addEventListener("submit",e=>{
 });
 $("resetDemo").addEventListener("click",()=>{dramas=structuredClone(demoDramas);saveDramas();renderDramas();showToast(t("reset"));});
 applyLanguage();
+// VELORA — day/night theme switcher
+(() => {
+  const toggle = document.getElementById("themeToggle");
+
+  if (!toggle) return;
+
+  let currentTheme = "night";
+
+  try {
+    currentTheme = localStorage.getItem("velora-theme") || "night";
+  } catch (error) {}
+
+  function applyTheme(theme) {
+    currentTheme = theme;
+    document.body.dataset.theme = theme;
+
+    toggle.textContent = theme === "day" ? "🌙" : "☀️";
+    toggle.setAttribute(
+      "aria-label",
+      theme === "day" ? "Switch to night theme" : "Switch to day theme"
+    );
+    toggle.title = theme === "day" ? "Ночная тема" : "Дневная тема";
+
+    try {
+      localStorage.setItem("velora-theme", theme);
+    } catch (error) {}
+  }
+
+  applyTheme(currentTheme);
+
+  toggle.addEventListener("click", () => {
+    applyTheme(currentTheme === "day" ? "night" : "day");
+  });
+})();
