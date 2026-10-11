@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#160e14">
+  <meta name="description" content="Original AI short dramas, in one place.">
+  <title>Velora — AI Drama</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <button class="brand" id="homeBtn" aria-label="Home"><span class="brand-mark">V</span><span>VELORA</span></button>
+    <div class="top-actions">
+      <select id="languageSelect" aria-label="Language">
+        <option value="ru">RU</option><option value="en">EN</option><option value="ko">KO</option>
+      </select>
+      <button class="ghost-btn" id="adminToggle" data-i18n="creator">Creator</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow" data-i18n="tagline">YOUR NEXT OBSESSION</p>
+        <h1 data-i18n="heroTitle">Short dramas.<br><em>Big feelings.</em></h1>
+        <p class="hero-desc" data-i18n="heroDesc">Original stories, unforgettable characters, one more episode.</p>
+        <button class="primary-btn" id="browseBtn"><span data-i18n="browse">Explore dramas</span><span aria-hidden="true"> ↗</span></button>
+      </div>
+      <div class="hero-art" aria-label="Drama cover artwork">
+        <div class="hero-glow"></div>
+        <div class="hero-card hero-card-back"><span>SECRET<br>HEIR</span></div>
+        <div class="hero-card hero-card-front"><div class="cover-kicker">A VELORA ORIGINAL</div><div class="cover-title">AFTER<br><i>MIDNIGHT</i></div><div class="cover-sub">A love worth risking everything for.</div></div>
+        <div class="floating-label">NEW EPISODES</div>
+      </div>
+    </section>
+
+    <section class="section" id="catalog">
+      <div class="section-heading"><div><p class="eyebrow" data-i18n="curated">CURATED FOR YOU</p><h2 data-i18n="popular">Popular stories</h2></div><span class="section-note" data-i18n="demoNote">Starter demo</span></div>
+      <div class="filters" id="filters">
+        <button class="filter active" data-genre="all" data-i18n="all">All</button>
+        <button class="filter" data-genre="romance" data-i18n="romance">Romance</button>
+        <button class="filter" data-genre="revenge" data-i18n="revenge">Revenge</button>
+        <button class="filter" data-genre="mystery" data-i18n="mystery">Mystery</button>
+        <button class="filter" data-genre="fantasy" data-i18n="fantasy">Fantasy</button>
+      </div>
+      <div class="drama-grid" id="dramaGrid"></div>
+      <div class="empty-state hidden" id="emptyState" data-i18n="empty">No dramas in this category yet.</div>
+    </section>
+
+    <section class="creator-panel hidden" id="creatorPanel">
+      <div class="section-heading"><div><p class="eyebrow" data-i18n="studio">YOUR PRIVATE WORKSPACE</p><h2 data-i18n="creatorTitle">Creator studio</h2></div><span class="section-note" data-i18n="localOnly">Saved on this device</span></div>
+      <p class="creator-help" data-i18n="creatorHelp">Add a title, poster image URL and a direct video URL (MP4 recommended). This starter saves entries only in this browser; it does not upload files or publish them for other users.</p>
+      <form id="dramaForm" class="creator-form">
+        <label><span data-i18n="titleLabel">Drama title</span><input id="titleInput" required maxlength="80" placeholder="After Midnight"></label>
+        <label><span data-i18n="genreLabel">Genre</span><select id="genreInput"><option value="romance">Romance</option><option value="revenge">Revenge</option><option value="mystery">Mystery</option><option value="fantasy">Fantasy</option></select></label>
+        <label><span data-i18n="descLabel">Short description</span><textarea id="descInput" rows="2" maxlength="240" placeholder="A contract relationship changes everything..."></textarea></label>
+        <label><span data-i18n="posterLabel">Poster image URL (optional)</span><input id="posterInput" type="url" placeholder="https://..."></label>
+        <label><span data-i18n="videoLabel">Episode 1 video URL (MP4)</span><input id="videoInput" type="url" placeholder="https://.../episode1.mp4"></label>
+        <button class="primary-btn" type="submit" data-i18n="addDrama">Add drama</button>
+      </form>
+      <button class="text-btn" id="resetDemo" data-i18n="resetDemo">Reset demo catalog</button>
+    </section>
+  </main>
+
+  <footer><span class="brand-small">VELORA</span><span data-i18n="footer">An independent AI drama concept · Original stories only</span><span>© <span id="year"></span></span></footer>
+
+  <div class="modal hidden" id="watchModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+    <div class="watch-sheet">
+      <button class="close-btn" id="closeModal" aria-label="Close">×</button>
+      <div class="video-wrap" id="videoWrap">
+        <div class="video-placeholder" id="videoPlaceholder"><span class="play-symbol">▶</span><p data-i18n="noVideo">No episode video attached yet</p><small data-i18n="addVideoHint">Use Creator Studio to add a direct MP4 URL.</small></div>
+        <video id="videoPlayer" controls playsinline preload="metadata" class="hidden"></video>
+      </div>
+      <div class="watch-info"><p class="eyebrow" data-i18n="nowWatching">NOW WATCHING</p><h2 id="modalTitle">Drama title</h2><p id="modalDescription"></p><div class="episode-row"><span data-i18n="episodeOne">Episode 1</span><span class="section-note" data-i18n="previewLabel">Preview build</span></div></div>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
