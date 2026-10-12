@@ -43,12 +43,54 @@ const translations = {
   }
 };
 
+
 const demoDramas = [
-  {id:"midnight",title:"After Midnight",genre:"romance",description:"A chance meeting pulls two strangers into a secret neither can afford to reveal.",poster:"",video:"",episodes:8,art:"art1"},
-  {id:"heir",title:"The Secret Heir",genre:"mystery",description:"She came to expose the family. She never expected to fall for its heir.",poster:"",video:"",episodes:12,art:"art2"},
-  {id:"velvet",title:"Velvet Revenge",genre:"revenge",description:"One betrayal. A new identity. A plan that changes when love gets involved.",poster:"",video:"",episodes:10,art:"art3"},
-  {id:"moon",title:"Moonbound",genre:"fantasy",description:"A mysterious stranger appears every night at the same hour — and remembers her future.",poster:"",video:"",episodes:16,art:"art4"}
+  {
+    id:"midnight",
+    title:"After Midnight",
+    title_ru:"После полуночи",
+    title_ko:"자정 이후",
+    genre:"romance",
+    description:"A chance meeting pulls two strangers into a secret neither can afford to reveal.",
+    description_ru:"Случайная встреча втягивает двух незнакомцев в тайну, которую им нельзя раскрывать.",
+    description_ko:"우연한 만남으로 두 낯선 사람은 절대 밝혀서는 안 될 비밀에 휘말린다.",
+    poster:"",video:"",episodes:8,art:"art1"
+  },
+  {
+    id:"heir",
+    title:"The Secret Heir",
+    title_ru:"Тайный наследник",
+    title_ko:"숨겨진 상속자",
+    genre:"mystery",
+    description:"She came to expose the family. She never expected to fall for its heir.",
+    description_ru:"Она пришла раскрыть тайны этой семьи, но не ожидала влюбиться в её наследника.",
+    description_ko:"그녀는 그 집안의 비밀을 밝히러 왔지만, 상속자를 사랑하게 될 줄은 몰랐다.",
+    poster:"",video:"",episodes:12,art:"art2"
+  },
+  {
+    id:"velvet",
+    title:"Velvet Revenge",
+    title_ru:"Бархатная месть",
+    title_ko:"벨벳의 복수",
+    genre:"revenge",
+    description:"One betrayal. A new identity. A plan that changes when love gets involved.",
+    description_ru:"Одно предательство. Новая личность. И план, который меняется, когда в дело вмешивается любовь.",
+    description_ko:"한 번의 배신, 새로운 신분. 사랑이 끼어들면서 모든 것이 달라지는 계획.",
+    poster:"",video:"",episodes:10,art:"art3"
+  },
+  {
+    id:"moon",
+    title:"Moonbound",
+    title_ru:"Во власти луны",
+    title_ko:"달의 운명",
+    genre:"fantasy",
+    description:"A mysterious stranger appears every night at the same hour — and remembers her future.",
+    description_ru:"Каждую ночь в один и тот же час появляется загадочный незнакомец, который помнит её будущее.",
+    description_ko:"매일 밤 같은 시간 나타나는 수수께끼의 낯선 이. 그는 그녀의 미래를 기억한다.",
+    poster:"",video:"",episodes:16,art:"art4"
+  }
 ];
+
 const STORAGE_KEY = "maevrin_dramas_v1";
 let dramas = loadDramas();
 let currentGenre = "all";
@@ -78,13 +120,18 @@ function renderDramas(){
   $("dramaGrid").innerHTML = list.map((d,i)=>{
     const poster=safeUrl(d.poster);
     const artClass = d.art || ["art1","art2","art3","art4"][i%4];
-    const artText = d.title.split(/\\s+/).slice(0,2).map(escapeHtml).join("<br>");
+    const title = d["title_" + currentLanguage] || d.title;
+const description = d["description_" + currentLanguage] || d.description || t("sampleDesc");
+    const artText = title.split(/\s+/).slice(0,2).map(escapeHtml).join("<br>");
     const genre = translations[currentLanguage].genres[d.genre] || d.genre;
+    const title = d["title_" + currentLanguage] || d.title;
+const description = d["description_" + currentLanguage] || d.description || t("sampleDesc");
+const videoLabel = currentLanguage === "ru" ? "Видео" : currentLanguage === "ko" ? "영상" : currentLanguage === "ja" ? "動画" : currentLanguage === "es" ? "Vídeo" : currentLanguage === "pt" ? "Vídeo" : "Video";
     const posterMarkup = poster ? `<img class="poster-image" src="${escapeHtml(poster)}" alt="" loading="lazy" onerror="this.remove()">` : "";
-    return `<article class="drama-card" tabindex="0" role="button" aria-label="${escapeHtml(d.title)}" data-id="${escapeHtml(d.id)}">
+    return `<article class="drama-card" tabindex="0" role="button"aria-label="${escapeHtml(title)}"data-id="${escapeHtml(d.id)}">
       <div class="poster ${artClass}">${posterMarkup}<div class="poster-overlay"></div><div class="poster-copy"><div class="poster-genre">${escapeHtml(genre)}</div><div class="poster-title">${artText}</div></div></div>
-      <div class="card-title">${escapeHtml(d.title)}</div><div class="card-desc">${escapeHtml(d.description||t("sampleDesc"))}</div>
-      <div class="card-meta"><span>${d.episodes||1} ${t("episodeMany")}</span><span>▶ ${d.video?"Video":"Preview"}</span></div>
+      <div class="card-title">${escapeHtml(title)}</div><div class="card-desc">${escapeHtml(description)}</div>
+      <div class="card-meta"><span>${d.episodes||1} ${t("episodeMany")}</span><span>▶ ${d.video ? videoLabel : (currentLanguage === "ru" ? "Анонс" : currentLanguage === "ko" ? "미리보기" : currentLanguage === "ja" ? "予告" : currentLanguage === "es" ? "Avance" : currentLanguage === "pt" ? "Prévia" : "Preview")}</span></div>
     </article>`;
   }).join("");
   $("emptyState").classList.toggle("hidden",list.length!==0);
