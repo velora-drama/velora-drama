@@ -43,13 +43,9 @@ const translations = {
   }
 };
 
-
 const demoDramas = [
   {
-    id:"midnight",
-    title:"After Midnight",
-    title_ru:"После полуночи",
-    title_ko:"자정 이후",
+    id:"midnight", title:"After Midnight", title_ru:"После полуночи", title_ko:"자정 이후",
     genre:"romance",
     description:"A chance meeting pulls two strangers into a secret neither can afford to reveal.",
     description_ru:"Случайная встреча втягивает двух незнакомцев в тайну, которую им нельзя раскрывать.",
@@ -57,10 +53,7 @@ const demoDramas = [
     poster:"",video:"",episodes:8,art:"art1"
   },
   {
-    id:"heir",
-    title:"The Secret Heir",
-    title_ru:"Тайный наследник",
-    title_ko:"숨겨진 상속자",
+    id:"heir", title:"The Secret Heir", title_ru:"Тайный наследник", title_ko:"숨겨진 상속자",
     genre:"mystery",
     description:"She came to expose the family. She never expected to fall for its heir.",
     description_ru:"Она пришла раскрыть тайны этой семьи, но не ожидала влюбиться в её наследника.",
@@ -68,10 +61,7 @@ const demoDramas = [
     poster:"",video:"",episodes:12,art:"art2"
   },
   {
-    id:"velvet",
-    title:"Velvet Revenge",
-    title_ru:"Бархатная месть",
-    title_ko:"벨벳의 복수",
+    id:"velvet", title:"Velvet Revenge", title_ru:"Бархатная месть", title_ko:"벨벳의 복수",
     genre:"revenge",
     description:"One betrayal. A new identity. A plan that changes when love gets involved.",
     description_ru:"Одно предательство. Новая личность. И план, который меняется, когда в дело вмешивается любовь.",
@@ -79,10 +69,7 @@ const demoDramas = [
     poster:"",video:"",episodes:10,art:"art3"
   },
   {
-    id:"moon",
-    title:"Moonbound",
-    title_ru:"Во власти луны",
-    title_ko:"달의 운명",
+    id:"moon", title:"Moonbound", title_ru:"Во власти луны", title_ko:"달의 운명",
     genre:"fantasy",
     description:"A mysterious stranger appears every night at the same hour — and remembers her future.",
     description_ru:"Каждую ночь в один и тот же час появляется загадочный незнакомец, который помнит её будущее.",
@@ -95,40 +82,53 @@ const STORAGE_KEY = "maevrin_dramas_v1";
 let dramas = loadDramas();
 let currentGenre = "all";
 let currentLanguage = localStorage.getItem("maevrin_language") || "ru";
+if (!translations[currentLanguage]) currentLanguage = "ru";
+
 const $ = (id) => document.getElementById(id);
 $("year").textContent = new Date().getFullYear();
 $("languageSelect").value = currentLanguage;
 
 function loadDramas(){
-  try { const saved = localStorage.getItem(STORAGE_KEY); return saved ? JSON.parse(saved) : structuredClone(demoDramas); }
-  catch { return structuredClone(demoDramas); }
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    return saved ? JSON.parse(saved) : structuredClone(demoDramas);
+  } catch {
+    return structuredClone(demoDramas);
+  }
 }
 function saveDramas(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(dramas)); }
 function t(key){ return translations[currentLanguage][key] || translations.en[key] || key; }
-function escapeHtml(value=""){return String(value).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
-function safeUrl(value){try{const u=new URL(value);return ["http:","https:"].includes(u.protocol)?u.href:"";}catch{return "";}}
+function escapeHtml(value=""){
+  return String(value).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+function safeUrl(value){
+  try {
+    const u = new URL(value);
+    return ["http:","https:"].includes(u.protocol) ? u.href : "";
+  } catch {
+    return "";
+  }
+}
 function applyLanguage(){
   document.documentElement.lang = currentLanguage;
   document.querySelectorAll("[data-i18n]").forEach(el=>{
-    const key=el.dataset.i18n;
-    if(translations[currentLanguage][key]) el.innerHTML=translations[currentLanguage][key];
+    const key = el.dataset.i18n;
+    if(translations[currentLanguage][key]) el.innerHTML = translations[currentLanguage][key];
   });
   renderDramas();
 }
 function renderDramas(){
   const list = dramas.filter(d=>currentGenre==="all"||d.genre===currentGenre);
   $("dramaGrid").innerHTML = list.map((d,i)=>{
-    const poster=safeUrl(d.poster);
+    const poster = safeUrl(d.poster);
     const artClass = d.art || ["art1","art2","art3","art4"][i%4];
     const title = d["title_" + currentLanguage] || d.title;
-const description = d["description_" + currentLanguage] || d.description || t("sampleDesc");
+    const description = d["description_" + currentLanguage] || d.description || t("sampleDesc");
     const artText = title.split(/\s+/).slice(0,2).map(escapeHtml).join("<br>");
     const genre = translations[currentLanguage].genres[d.genre] || d.genre;
-    const title = d["title_" + currentLanguage] || d.title;
-const description = d["description_" + currentLanguage] || d.description || t("sampleDesc");
-const videoLabel = currentLanguage === "ru" ? "Видео" : currentLanguage === "ko" ? "영상" : currentLanguage === "ja" ? "動画" : currentLanguage === "es" ? "Vídeo" : currentLanguage === "pt" ? "Vídeo" : "Video";
+    const videoLabel = currentLanguage === "ru" ? "Видео" : currentLanguage === "ko" ? "영상" : currentLanguage === "ja" ? "動画" : currentLanguage === "es" ? "Vídeo" : currentLanguage === "pt" ? "Vídeo" : "Video";
     const posterMarkup = poster ? `<img class="poster-image" src="${escapeHtml(poster)}" alt="" loading="lazy" onerror="this.remove()">` : "";
-    return `<article class="drama-card" tabindex="0" role="button"aria-label="${escapeHtml(title)}"data-id="${escapeHtml(d.id)}">
+    return `<article class="drama-card" tabindex="0" role="button" aria-label="${escapeHtml(title)}" data-id="${escapeHtml(d.id)}">
       <div class="poster ${artClass}">${posterMarkup}<div class="poster-overlay"></div><div class="poster-copy"><div class="poster-genre">${escapeHtml(genre)}</div><div class="poster-title">${artText}</div></div></div>
       <div class="card-title">${escapeHtml(title)}</div><div class="card-desc">${escapeHtml(description)}</div>
       <div class="card-meta"><span>${d.episodes||1} ${t("episodeMany")}</span><span>▶ ${d.video ? videoLabel : (currentLanguage === "ru" ? "Анонс" : currentLanguage === "ko" ? "미리보기" : currentLanguage === "ja" ? "予告" : currentLanguage === "es" ? "Avance" : currentLanguage === "pt" ? "Prévia" : "Preview")}</span></div>
@@ -137,83 +137,120 @@ const videoLabel = currentLanguage === "ru" ? "Видео" : currentLanguage ===
   $("emptyState").classList.toggle("hidden",list.length!==0);
 }
 function showToast(message){
-  const old=document.querySelector(".toast"); if(old) old.remove();
-  const el=document.createElement("div");el.className="toast";el.textContent=message;document.body.appendChild(el);
+  const old = document.querySelector(".toast");
+  if(old) old.remove();
+  const el = document.createElement("div");
+  el.className = "toast";
+  el.textContent = message;
+  document.body.appendChild(el);
   setTimeout(()=>el.remove(),3000);
 }
 function openDrama(id){
-  const d=dramas.find(x=>x.id===id);if(!d)return;
-  $("modalTitle").textContent=d.title;
-  $("modalDescription").textContent=d.description||t("sampleDesc");
-  const video=safeUrl(d.video);
-  $("videoPlayer").pause();$("videoPlayer").removeAttribute("src");$("videoPlayer").load();
-  $("videoPlayer").classList.add("hidden");$("videoPlaceholder").classList.remove("hidden");
+  const d = dramas.find(x=>x.id===id);
+  if(!d) return;
+  $("modalTitle").textContent = d.title;
+  $("modalDescription").textContent = d.description || t("sampleDesc");
+  const video = safeUrl(d.video);
+  $("videoPlayer").pause();
+  $("videoPlayer").removeAttribute("src");
+  $("videoPlayer").load();
+  $("videoPlayer").classList.add("hidden");
+  $("videoPlaceholder").classList.remove("hidden");
   if(video){
-    $("videoPlayer").src=video;
-    $("videoPlayer").classList.remove("hidden");$("videoPlaceholder").classList.add("hidden");
-    $("videoPlayer").onerror=()=>{ $("videoPlayer").classList.add("hidden");$("videoPlaceholder").classList.remove("hidden");showToast(t("invalidVideo")); };
+    $("videoPlayer").src = video;
+    $("videoPlayer").classList.remove("hidden");
+    $("videoPlaceholder").classList.add("hidden");
+    $("videoPlayer").onerror = ()=>{
+      $("videoPlayer").classList.add("hidden");
+      $("videoPlaceholder").classList.remove("hidden");
+      showToast(t("invalidVideo"));
+    };
   }
-  $("watchModal").classList.remove("hidden");document.body.style.overflow="hidden";
+  $("watchModal").classList.remove("hidden");
+  document.body.style.overflow = "hidden";
 }
 function closeDrama(){
-  $("watchModal").classList.add("hidden");$("videoPlayer").pause();document.body.style.overflow="";
+  $("watchModal").classList.add("hidden");
+  $("videoPlayer").pause();
+  document.body.style.overflow = "";
 }
-$("dramaGrid").addEventListener("click",e=>{const card=e.target.closest("[data-id]");if(card)openDrama(card.dataset.id);});
-$("dramaGrid").addEventListener("keydown",e=>{if((e.key==="Enter"||e.key===" ")&&e.target.matches("[data-id]")){e.preventDefault();openDrama(e.target.dataset.id);}});
-$("closeModal").addEventListener("click",closeDrama);$("modalBackdrop").addEventListener("click",closeDrama);
+$("dramaGrid").addEventListener("click",e=>{
+  const card = e.target.closest("[data-id]");
+  if(card) openDrama(card.dataset.id);
+});
+$("dramaGrid").addEventListener("keydown",e=>{
+  if((e.key==="Enter"||e.key===" ")&&e.target.matches("[data-id]")){
+    e.preventDefault();
+    openDrama(e.target.dataset.id);
+  }
+});
+$("closeModal").addEventListener("click",closeDrama);
+$("modalBackdrop").addEventListener("click",closeDrama);
 document.addEventListener("keydown",e=>{if(e.key==="Escape")closeDrama();});
 $("languageSelect").addEventListener("change",e=>{
-  currentLanguage=e.target.value;
+  currentLanguage = e.target.value;
   localStorage.setItem("maevrin_language",currentLanguage);
   localStorage.setItem("velora_language",currentLanguage);
   applyLanguage();
 });
-$("filters").addEventListener("click",e=>{const btn=e.target.closest("[data-genre]");if(!btn)return;currentGenre=btn.dataset.genre;document.querySelectorAll(".filter").forEach(b=>b.classList.toggle("active",b===btn));renderDramas();});
+$("filters").addEventListener("click",e=>{
+  const btn = e.target.closest("[data-genre]");
+  if(!btn) return;
+  currentGenre = btn.dataset.genre;
+  document.querySelectorAll(".filter").forEach(b=>b.classList.toggle("active",b===btn));
+  renderDramas();
+});
 $("browseBtn").addEventListener("click",()=>$("catalog").scrollIntoView({behavior:"smooth"}));
 $("homeBtn").addEventListener("click",()=>window.scrollTo({top:0,behavior:"smooth"}));
-$("adminToggle").addEventListener("click",()=>{$("creatorPanel").classList.toggle("hidden");if(!$("creatorPanel").classList.contains("hidden"))$("creatorPanel").scrollIntoView({behavior:"smooth",block:"start"});});
+$("adminToggle").addEventListener("click",()=>{
+  $("creatorPanel").classList.toggle("hidden");
+  if(!$("creatorPanel").classList.contains("hidden")) $("creatorPanel").scrollIntoView({behavior:"smooth",block:"start"});
+});
 $("dramaForm").addEventListener("submit",e=>{
   e.preventDefault();
-  const title=$("titleInput").value.trim();
-  const poster=safeUrl($("posterInput").value.trim());
-  const video=safeUrl($("videoInput").value.trim());
-  if(!title)return;
-  const drama={id:"user-"+Date.now(),title,genre:$("genreInput").value,description:$("descInput").value.trim(),poster,video,episodes:1,art:"art"+(dramas.length%4+1)};
-  dramas.unshift(drama);saveDramas();renderDramas();e.target.reset();showToast(t("added"));
+  const title = $("titleInput").value.trim();
+  const poster = safeUrl($("posterInput").value.trim());
+  const video = safeUrl($("videoInput").value.trim());
+  if(!title) return;
+  const drama = {
+    id:"user-"+Date.now(),title,genre:$("genreInput").value,
+    description:$("descInput").value.trim(),poster,video,episodes:1,
+    art:"art"+(dramas.length%4+1)
+  };
+  dramas.unshift(drama);
+  saveDramas();
+  renderDramas();
+  e.target.reset();
+  showToast(t("added"));
 });
-$("resetDemo").addEventListener("click",()=>{dramas=structuredClone(demoDramas);saveDramas();renderDramas();showToast(t("reset"));});
+$("resetDemo").addEventListener("click",()=>{
+  dramas = structuredClone(demoDramas);
+  saveDramas();
+  renderDramas();
+  showToast(t("reset"));
+});
 applyLanguage();
+
 // MAEVRIN — day/night theme switcher
-(() => {
+(()=>{
   const toggle = document.getElementById("themeToggle");
-
-  if (!toggle) return;
-
+  if(!toggle) return;
   let currentTheme = "night";
-
   try {
     currentTheme = localStorage.getItem("velora-theme") || "night";
-  } catch (error) {}
-
-  function applyTheme(theme) {
+  } catch(error) {}
+  function applyTheme(theme){
     currentTheme = theme;
     document.body.dataset.theme = theme;
-console.log("ТЕМА:", theme);
     toggle.textContent = theme === "day" ? "🌙" : "☀️";
-    toggle.setAttribute(
-      "aria-label",
-      theme === "day" ? "Switch to night theme" : "Switch to day theme"
-    );
+    toggle.setAttribute("aria-label",theme === "day" ? "Switch to night theme" : "Switch to day theme");
     toggle.title = theme === "day" ? "Ночная тема" : "Дневная тема";
-
     try {
-      localStorage.setItem("velora-theme", theme);
-    } catch (error) {}
+      localStorage.setItem("velora-theme",theme);
+    } catch(error) {}
   }
-
   applyTheme(currentTheme);
-
-  toggle.addEventListener("click", () => {
+  toggle.addEventListener("click",()=>{
     applyTheme(currentTheme === "day" ? "night" : "day");
   });
 })();
