@@ -215,3 +215,164 @@ body[data-theme="day"] footer {
 body[data-theme="day"] .brand-small {
   color: #9876b5;
 }
+/* MAEVRIN — Signature Luxury 2026 */
+/* NIGHT: wine, sapphire, plum and ruby */
+:root {
+  --bg: #0b0811;
+  --panel: #15101c;
+  --panel2: #211626;
+  --text: #f0e6e8;
+  --muted: #b6a7bd;
+  --accent: #d9a5cf;
+  --accent2: #7562b5;
+  --line: #493047;
+  --gold: #e9c58d;
+}
+body:not([data-theme="day"]) {
+  background:
+    radial-gradient(ellipse at 8% 5%, #522038 0, transparent 32%),
+    radial-gradient(ellipse at 90% 12%, #152f50 0, transparent 36%),
+    radial-gradient(ellipse at 60% 80%, #30152f 0, transparent 38%),
+    var(--bg);
+}
+.topbar {
+  border-bottom-color: #c9a0d033;
+  box-shadow: 0 8px 35px #0005;
+}
+.brand {
+  font-family: "Playfair Display", serif;
+  letter-spacing: .22em;
+}
+.brand-mark {
+  border-radius: 9px 2px 9px 2px;
+  border-color: var(--gold);
+  color: var(--gold);
+  box-shadow: 0 0 18px #d9a5cf22;
+}
+.ghost-btn,
+.filter,
+.top-actions select {
+  border-radius: 4px 12px 4px 12px;
+  transition: border-color .25s, box-shadow .25s,
+              background .25s, transform .25s;
+}
+.ghost-btn:hover,
+.filter:hover {
+  border-color: var(--gold);
+  box-shadow: 0 0 16px #d9a5cf25;
+}
+.primary-btn {
+  background: linear-gradient(110deg, #9b456d, #513b78 55%, #173f5b);
+  border: 1px solid #e9c58d99;
+  border-radius: 4px 15px 4px 15px;
+  color: #fff2e9;
+  box-shadow: 0 0 22px #6b397833;
+}
+.primary-btn:hover {
+  box-shadow: 0 0 28px #a45caa66;
+}
+.filter.active {
+  background: linear-gradient(110deg, #612747aa, #263b65aa);
+  border-color: var(--gold);
+  color: #ffe6d1;
+  box-shadow: inset 0 0 14px #b76a8930;
+}
+.poster {
+  border-radius: 5px 13px 5px 13px;
+  border-color: #b78da944;
+  box-shadow: 0 10px 28px #0005;
+}
+.poster:hover {
+  border-color: var(--gold);
+  box-shadow: 0 0 24px #8158a944;
+}
+.creator-panel,
+.watch-sheet {
+  border-radius: 5px 16px 5px 16px;
+  border-color: #8a648455;
+}
+.theme-toggle {
+  border-radius: 10px 3px 10px 3px;
+}
+/* DAY: rich plum, wine, sapphire and emerald */
+body[data-theme="day"] {
+  color-scheme: dark;
+  --bg: #21121f;
+  --panel: #2b192d;
+  --panel2: #382039;
+  --text: #f7e9ec;
+  --muted: #d0b8cd;
+  --accent: #e5a9c7;
+  --accent2: #7897d2;
+  --line: #65415e;
+  --gold: #f0ce91;
+  background:
+    radial-gradient(ellipse at 0% 0%, #74304e 0, transparent 42%),
+    radial-gradient(ellipse at 100% 15%, #174b48 0, transparent 34%),
+    radial-gradient(ellipse at 65% 90%, #263c72 0, transparent 42%),
+    var(--bg);
+}
+body[data-theme="day"] .topbar {
+  background: #21121fe8;
+  border-bottom-color: #e9c58d66;
+}
+body[data-theme="day"] .brand,
+body[data-theme="day"] .top-actions select {
+  color: var(--text);
+}
+body[data-theme="day"] .top-actions select,
+body[data-theme="day"] .creator-form input,
+body[data-theme="day"] .creator-form textarea,
+body[data-theme="day"] .creator-form select {
+  background: #2b192d;
+  color: var(--text);
+  border-color: var(--line);
+}
+body[data-theme="day"] .ghost-btn,
+body[data-theme="day"] .filter {
+  color: #f4dce9;
+  border-color: #8c5d80;
+}
+body[data-theme="day"] .filter.active {
+  background: linear-gradient(110deg, #6e2c50, #29466f);
+  color: #fff0df;
+}
+body[data-theme="day"] .creator-panel {
+  background: linear-gradient(135deg, #39203b, #202d45 65%, #173d39);
+  border-color: #b78da955;
+}
+body[data-theme="day"] .watch-sheet {
+  background: #241728;
+  color: var(--text);
+  border-color: var(--line);
+}
+body[data-theme="day"] .close-btn {
+  background: #2b192d;
+  color: var(--text);
+}
+body[data-theme="day"] .creator-form label {
+  color: #f1dce8;
+}
+body[data-theme="day"] footer {
+  color: #cbb5c9;
+  border-color: #65415e;
+}
+body[data-theme="day"] .brand-small {
+  color: var(--gold);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .brand-mark,
+  .theme-toggle,
+  .ghost-btn,
+  .filter,
+  .poster {
+    transition: all .28s ease;
+  }
+  .brand-mark:hover {
+    box-shadow: 0 0 24px #e9c58d55;
+    transform: rotate(-5deg);
+  }
+  .poster:hover {
+    transform: translateY(-4px);
+  }
+}
