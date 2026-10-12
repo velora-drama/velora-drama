@@ -49,7 +49,7 @@ const demoDramas = [
   {id:"velvet",title:"Velvet Revenge",genre:"revenge",description:"One betrayal. A new identity. A plan that changes when love gets involved.",poster:"",video:"",episodes:10,art:"art3"},
   {id:"moon",title:"Moonbound",genre:"fantasy",description:"A mysterious stranger appears every night at the same hour — and remembers her future.",poster:"",video:"",episodes:16,art:"art4"}
 ];
-const STORAGE_KEY = "velora_dramas_v1";
+const STORAGE_KEY = "maevrin_dramas_v1";
 let dramas = loadDramas();
 let currentGenre = "all";
 let currentLanguage = localStorage.getItem("velora_language") || "ru";
