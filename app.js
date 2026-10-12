@@ -146,7 +146,7 @@ applyLanguage();
   function applyTheme(theme) {
     currentTheme = theme;
     document.body.dataset.theme = theme;
-
+console.log("ТЕМА:", theme);
     toggle.textContent = theme === "day" ? "🌙" : "☀️";
     toggle.setAttribute(
       "aria-label",
