@@ -131,7 +131,7 @@ $("dramaForm").addEventListener("submit",e=>{
 });
 $("resetDemo").addEventListener("click",()=>{dramas=structuredClone(demoDramas);saveDramas();renderDramas();showToast(t("reset"));});
 applyLanguage();
-// VELORA — day/night theme switcher
+// MAEVRIN — day/night theme switcher
 (() => {
   const toggle = document.getElementById("themeToggle");
 
