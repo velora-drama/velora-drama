@@ -27,6 +27,22 @@ const translations = {
     invalidVideo:"Could not load the video. Check that the URL points directly to an MP4 file.", sampleDesc:"An original story is coming soon. Add a video in Creator Studio.",
     openStudio:"Open Creator Studio to add a video.", genres:{romance:"Romance",revenge:"Revenge",mystery:"Mystery",fantasy:"Fantasy"}
   },
+  
+  es: {
+    creator:"Estudio de creador", tagline:"TU NUEVA OBSESIÓN", heroTitle:"Dramas cortos.<br><em>Grandes emociones.</em>",
+    heroDesc:"Historias originales, personajes inolvidables y un episodio más.", browse:"Explorar dramas", curated:"SELECCIONADOS PARA TI",
+    popular:"Historias populares", demoNote:"Versión de demostración", all:"Todos", romance:"Romance", revenge:"Venganza", mystery:"Misterio", fantasy:"Fantasía",
+    empty:"Todavía no hay dramas en esta categoría.", studio:"TU ESPACIO CREATIVO", creatorTitle:"Estudio de creador",
+    localOnly:"Guardado en este dispositivo", creatorHelp:"Añade un título, el enlace de una imagen para el póster y un enlace directo al vídeo (se recomienda MP4). Esta versión guarda los datos solo en este navegador: los archivos no se suben a un servidor ni están disponibles para otros usuarios.",
+    titleLabel:"Título del drama", genreLabel:"Género", descLabel:"Descripción breve", posterLabel:"Enlace del póster (opcional)",
+    videoLabel:"Enlace del vídeo del episodio 1 (MP4)", addDrama:"Añadir drama", resetDemo:"Restablecer catálogo de demostración",
+    footer:"Concepto independiente de dramas con IA · Solo historias originales", noVideo:"Todavía no hay vídeo del episodio",
+    addVideoHint:"Añade un enlace directo a MP4 en el estudio de creador.", nowWatching:"VIENDO AHORA", episodeOne:"Episodio 1", previewLabel:"Versión de prueba",
+    episode:"episodio", episodes:"episodios", episodeMany:"episodios", added:"Drama añadido en este navegador.", reset:"Catálogo de demostración restaurado.",
+    invalidVideo:"No se pudo cargar el vídeo. Comprueba que el enlace directo apunta a un archivo MP4.", sampleDesc:"Una historia original llegará pronto. Añade un vídeo en el estudio de creador.",
+    openStudio:"Abre el estudio de creador para añadir un vídeo.", genres:{romance:"Romance",revenge:"Venganza",mystery:"Misterio",fantasy:"Fantasía"}
+  },
+  
   ko: {
     creator:"제작자 스튜디오", tagline:"다음 정주행 드라마", heroTitle:"짧은 드라마.<br><em>깊은 감정.</em>",
     heroDesc:"오리지널 스토리, 잊을 수 없는 캐릭터, 다음 에피소드.", browse:"드라마 둘러보기", curated:"당신을 위한 추천",
