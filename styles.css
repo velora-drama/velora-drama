@@ -12,7 +12,7 @@
 :root {
   color-scheme: dark;
 }
-/* VELORA — luxury visual update */
+/* MAEVRIN — luxury visual update */
 :root {
   --bg: #0c080e;
   --panel: #171019;
@@ -75,7 +75,7 @@ body {
     box-shadow: 0 12px 40px #d98da955;
   }
 }
-/* VELORA — luxury day & night themes */
+/* MAEVRIN — luxury day & night themes */
 
 .theme-toggle {
   width: 42px;
