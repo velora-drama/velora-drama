@@ -52,7 +52,7 @@ const demoDramas = [
 const STORAGE_KEY = "maevrin_dramas_v1";
 let dramas = loadDramas();
 let currentGenre = "all";
-let currentLanguage = localStorage.getItem("velora_language") || "ru";
+let currentLanguage = localStorage.getItem("maevrin_language") || "ru";
 const $ = (id) => document.getElementById(id);
 $("year").textContent = new Date().getFullYear();
 $("languageSelect").value = currentLanguage;
