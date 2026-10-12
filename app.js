@@ -115,27 +115,52 @@ function applyLanguage(){
   });
   renderDramas();
 }
+
 function renderDramas(){
-  const list = dramas.filter(d=>currentGenre==="all"||d.genre===currentGenre);
-  $("dramaGrid").innerHTML = list.map((d,i)=>{
-    const poster=safeUrl(d.poster);
-    const artClass = d.art || ["art1","art2","art3","art4"][i%4];
+  const list = dramas.filter(d => currentGenre === "all" || d.genre === currentGenre);
+
+  $("dramaGrid").innerHTML = list.map((d, i) => {
+    const poster = safeUrl(d.poster);
+    const artClass = d.art || ["art1", "art2", "art3", "art4"][i % 4];
+
     const title = d["title_" + currentLanguage] || d.title;
-const description = d["description_" + currentLanguage] || d.description || t("sampleDesc");
-    const artText = title.split(/\s+/).slice(0,2).map(escapeHtml).join("<br>");
+    const description = d["description_" + currentLanguage] || d.description || t("sampleDesc");
+    const artText = title.split(/\s+/).slice(0, 2).map(escapeHtml).join("<br>");
     const genre = translations[currentLanguage].genres[d.genre] || d.genre;
-    const title = d["title_" + currentLanguage] || d.title;
-const description = d["description_" + currentLanguage] || d.description || t("sampleDesc");
-const videoLabel = currentLanguage === "ru" ? "Видео" : currentLanguage === "ko" ? "영상" : currentLanguage === "ja" ? "動画" : currentLanguage === "es" ? "Vídeo" : currentLanguage === "pt" ? "Vídeo" : "Video";
-    const posterMarkup = poster ? `<img class="poster-image" src="${escapeHtml(poster)}" alt="" loading="lazy" onerror="this.remove()">` : "";
-    return `<article class="drama-card" tabindex="0" role="button"aria-label="${escapeHtml(title)}"data-id="${escapeHtml(d.id)}">
+
+    const videoLabel = {
+      ru: "Видео",
+      en: "Video",
+      ko: "영상",
+      ja: "動画",
+      es: "Vídeo",
+      pt: "Vídeo"
+    }[currentLanguage] || "Video";
+
+    const previewLabel = {
+      ru: "Анонс",
+      en: "Preview",
+      ko: "미리보기",
+      ja: "予告",
+      es: "Avance",
+      pt: "Prévia"
+    }[currentLanguage] || "Preview";
+
+    const posterMarkup = poster
+      ? `<img class="poster-image" src="${escapeHtml(poster)}" alt="" loading="lazy" onerror="this.remove()">`
+      : "";
+
+    return `<article class="drama-card" tabindex="0" role="button" aria-label="${escapeHtml(title)}" data-id="${escapeHtml(d.id)}">
       <div class="poster ${artClass}">${posterMarkup}<div class="poster-overlay"></div><div class="poster-copy"><div class="poster-genre">${escapeHtml(genre)}</div><div class="poster-title">${artText}</div></div></div>
-      <div class="card-title">${escapeHtml(title)}</div><div class="card-desc">${escapeHtml(description)}</div>
-      <div class="card-meta"><span>${d.episodes||1} ${t("episodeMany")}</span><span>▶ ${d.video ? videoLabel : (currentLanguage === "ru" ? "Анонс" : currentLanguage === "ko" ? "미리보기" : currentLanguage === "ja" ? "予告" : currentLanguage === "es" ? "Avance" : currentLanguage === "pt" ? "Prévia" : "Preview")}</span></div>
+      <div class="card-title">${escapeHtml(title)}</div>
+      <div class="card-desc">${escapeHtml(description)}</div>
+      <div class="card-meta"><span>${d.episodes || 1} ${t("episodeMany")}</span><span>▶ ${d.video ? videoLabel : previewLabel}</span></div>
     </article>`;
   }).join("");
-  $("emptyState").classList.toggle("hidden",list.length!==0);
+
+  $("emptyState").classList.toggle("hidden", list.length !== 0);
 }
+
 function showToast(message){
   const old=document.querySelector(".toast"); if(old) old.remove();
   const el=document.createElement("div");el.className="toast";el.textContent=message;document.body.appendChild(el);
