@@ -8,7 +8,7 @@
 .poster.art2{background:radial-gradient(ellipse at 40% 24%,#d5b3a1 0,#7b5660 19%,transparent 42%),linear-gradient(145deg,#4b414a,#160e18 72%)}
 .poster.art3{background:radial-gradient(ellipse at 64% 28%,#c78b82 0,#75364b 22%,transparent 43%),linear-gradient(145deg,#7b304a,#1a0c19 72%)}
 .poster.art4{background:radial-gradient(ellipse at 54% 24%,#e3c2d3 0,#7c648d 20%,transparent 45%),linear-gradient(145deg,#4a3b66,#100d1b 72%)}
-/* VELORA — стиль интерфейса */
+/* MAEVRIN — стиль интерфейса */
 :root {
   color-scheme: dark;
 }
