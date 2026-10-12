@@ -115,7 +115,12 @@ $("dramaGrid").addEventListener("click",e=>{const card=e.target.closest("[data-i
 $("dramaGrid").addEventListener("keydown",e=>{if((e.key==="Enter"||e.key===" ")&&e.target.matches("[data-id]")){e.preventDefault();openDrama(e.target.dataset.id);}});
 $("closeModal").addEventListener("click",closeDrama);$("modalBackdrop").addEventListener("click",closeDrama);
 document.addEventListener("keydown",e=>{if(e.key==="Escape")closeDrama();});
-$("languageSelect").addEventListener("change",e=>{currentLanguage=e.target.value;localStorage.setItem("velora_language",currentLanguage);applyLanguage();});
+$("languageSelect").addEventListener("change",e=>{
+  currentLanguage=e.target.value;
+  localStorage.setItem("maevrin_language",currentLanguage);
+  localStorage.setItem("velora_language",currentLanguage);
+  applyLanguage();
+});
 $("filters").addEventListener("click",e=>{const btn=e.target.closest("[data-genre]");if(!btn)return;currentGenre=btn.dataset.genre;document.querySelectorAll(".filter").forEach(b=>b.classList.toggle("active",b===btn));renderDramas();});
 $("browseBtn").addEventListener("click",()=>$("catalog").scrollIntoView({behavior:"smooth"}));
 $("homeBtn").addEventListener("click",()=>window.scrollTo({top:0,behavior:"smooth"}));
