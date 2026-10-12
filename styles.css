@@ -150,3 +150,68 @@ body[data-theme="day"] .primary-btn {
   color: #39243c;
   box-shadow: 0 8px 28px #bd789b30;
 }
+
+/* MAEVRIN — fix day theme */
+body[data-theme="day"] {
+  --text: #38283b;
+  --muted: #786879;
+  --line: #dfc9df;
+}
+
+body[data-theme="day"] .topbar {
+  background: rgba(255, 250, 252, 0.95);
+}
+
+body[data-theme="day"] .brand,
+body[data-theme="day"] .top-actions select {
+  color: #38283b;
+}
+
+body[data-theme="day"] .top-actions select {
+  background: #fffafb;
+  border-color: #dfc9df;
+}
+
+body[data-theme="day"] .ghost-btn,
+body[data-theme="day"] .filter {
+  color: #62465f;
+  border-color: #dfc9df;
+}
+
+body[data-theme="day"] .filter.active {
+  background: #f2e5f0;
+  color: #38283b;
+}
+
+body[data-theme="day"] .creator-form label {
+  color: #62465f;
+}
+
+body[data-theme="day"] .creator-form input,
+body[data-theme="day"] .creator-form textarea,
+body[data-theme="day"] .creator-form select {
+  background: #fffafb;
+  color: #38283b;
+  border-color: #dfc9df;
+}
+
+body[data-theme="day"] .watch-sheet {
+  background: #fffafb;
+  color: #38283b;
+  border-color: #dfc9df;
+}
+
+body[data-theme="day"] .close-btn {
+  background: #fffafb;
+  color: #38283b;
+  border-color: #dfc9df;
+}
+
+body[data-theme="day"] footer {
+  color: #786879;
+  border-color: #dfc9df;
+}
+
+body[data-theme="day"] .brand-small {
+  color: #9876b5;
+}
