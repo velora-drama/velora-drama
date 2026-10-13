@@ -97,14 +97,21 @@ const $ = (id) => document.getElementById(id);
 $("year").textContent = new Date().getFullYear();
 $("languageSelect").value = currentLanguage;
 
+
 function loadDramas(){
   try {
     const saved = localStorage.getItem(STORAGE_KEY);
-    return saved ? JSON.parse(saved) : structuredClone(demoDramas);
+    if (!saved) return structuredClone(demoDramas);
+
+    const parsed = JSON.parse(saved);
+    if (!Array.isArray(parsed)) return structuredClone(demoDramas);
+
+    return parsed;
   } catch {
     return structuredClone(demoDramas);
   }
 }
+
     
 function saveDramas(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(dramas)); }
 function t(key){ return translations[currentLanguage][key] || translations.en[key] || key; }
