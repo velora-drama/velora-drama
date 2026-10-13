@@ -100,15 +100,11 @@ $("languageSelect").value = currentLanguage;
 function loadDramas(){
   try {
     const saved = localStorage.getItem(STORAGE_KEY);
-    if (!saved) return structuredClone(demoDramas);
-    const savedDramas = JSON.parse(saved);
-    if (!Array.isArray(savedDramas)) return structuredClone(demoDramas);
-    const merged = [...savedDramas];
-    for (const demo of demoDramas) {
-      if (!merged.some(d => d.id === demo.id)) {
-        merged.push(demo);
-      }
-    }
+    return saved ? JSON.parse(saved) : structuredClone(demoDramas);
+  } catch {
+    return structuredClone(demoDramas);
+  }
+}
     return merged;
   } catch {
     return structuredClone(demoDramas);
