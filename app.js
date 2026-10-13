@@ -77,14 +77,14 @@ const demoDramas = [
     poster:"",video:"",episodes:16,art:"art4"
 
 },
-{
-id:“auction”, title:“The Shadow of the Auction”, title_ru:“Тень аукциона”, title_ko:“경매의 그림자”,
-genre:“mystery”,
-description:“An art expert enters a secret auction where every guest hides a dangerous secret.”,
-description_ru:“Эксперт по искусству попадает на закрытый аукцион, где каждый гость скрывает опасную тайну.”,
-description_ko:“미술 전문가가 모든 손님이 위험한 비밀을 숨긴 비밀 경매에 들어간다.”,
-poster:”./maevrin_ten_auktsiona_vertical.jpg”,video:””,episodes:8,art:“art2”
-}
+  {
+    id:"auction", title:"The Shadow of the Auction", title_ru:"Тень аукциона", title_ko:"경매의 그림자",
+    genre:"mystery",
+    description:"An art expert enters a secret auction where every guest hides a dangerous secret.",
+    description_ru:"Эксперт по искусству попадает на закрытый аукцион, где каждый гость скрывает опасную тайну.",
+    description_ko:"미술 전문가가 모든 손님이 위험한 비밀을 숨긴 비밀 경매에 들어간다.",
+    poster:"./maevrin_ten_auktsiona_vertical.jpg",video:"",episodes:8,art:"art2"
+  }
 ];
 
 const STORAGE_KEY = "maevrin_dramas_v1";
@@ -105,11 +105,7 @@ function loadDramas(){
     return structuredClone(demoDramas);
   }
 }
-    return merged;
-  } catch {
-    return structuredClone(demoDramas);
-  }
-}
+    
 function saveDramas(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(dramas)); }
 function t(key){ return translations[currentLanguage][key] || translations.en[key] || key; }
 function escapeHtml(value=""){
