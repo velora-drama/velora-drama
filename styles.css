@@ -377,3 +377,113 @@ body[data-theme="day"] .brand-small {
   }
 }
 /* MAEVRIN — Signature Luxury 2026 */
+/* MAEVRIN — Luxury Palette */
+:root {
+  --bg: #0b0811;
+  --panel: #17101d;
+  --panel2: #25172b;
+  --text: #f0e7ed;
+  --muted: #b9aabd;
+  --accent: #c6a0d8;
+  --accent2: #536eae;
+  --line: #493047;
+  --gold: #e8c68f;
+}
+/* Night atmosphere */
+body:not([data-theme="day"]) {
+  background:
+    radial-gradient(ellipse at 10% 0%, #54213d 0, transparent 34%),
+    radial-gradient(ellipse at 95% 15%, #183b60 0, transparent 36%),
+    radial-gradient(ellipse at 60% 100%, #341b43 0, transparent 40%),
+    var(--bg);
+}
+/* Elegant gold details */
+.brand-mark {
+  border-radius: 8px 2px 8px 2px;
+  border-color: var(--gold);
+  color: var(--gold);
+  box-shadow: 0 0 18px #e8c68f22;
+}
+.ghost-btn,
+.filter,
+.top-actions select {
+  border-radius: 4px 12px 4px 12px;
+}
+.primary-btn {
+  background: linear-gradient(115deg, #8e4269, #51417d 58%, #234a68);
+  border: 1px solid #e8c68f88;
+  border-radius: 4px 14px 4px 14px;
+  color: #fff0e8;
+}
+.filter.active {
+  background: linear-gradient(110deg, #612747, #273f69);
+  border-color: var(--gold);
+  color: #fff0df;
+}
+.poster {
+  border-radius: 5px 13px 5px 13px;
+  border-color: #a985b455;
+}
+.poster:hover {
+  border-color: var(--gold);
+  box-shadow: 0 0 24px #7557a644;
+}
+/* Rich, saturated day theme */
+body[data-theme="day"] {
+  color-scheme: dark;
+  --bg: #21121f;
+  --panel: #2d1a30;
+  --panel2: #3b2340;
+  --text: #f7e9ee;
+  --muted: #d1b9cf;
+  --accent: #e0a6c8;
+  --accent2: #7898d5;
+  --line: #67445f;
+  --gold: #f0ce92;
+  background:
+    radial-gradient(ellipse at 0% 0%, #77304e 0, transparent 42%),
+    radial-gradient(ellipse at 100% 15%, #1b5148 0, transparent 34%),
+    radial-gradient(ellipse at 65% 95%, #293d74 0, transparent 42%),
+    var(--bg);
+}
+body[data-theme="day"] .topbar {
+  background: #21121fee;
+  border-bottom-color: #e8c68f66;
+}
+body[data-theme="day"] .brand,
+body[data-theme="day"] .top-actions select {
+  color: var(--text);
+}
+body[data-theme="day"] .top-actions select,
+body[data-theme="day"] .creator-form input,
+body[data-theme="day"] .creator-form textarea,
+body[data-theme="day"] .creator-form select {
+  background: var(--panel);
+  color: var(--text);
+  border-color: var(--line);
+}
+body[data-theme="day"] .ghost-btn,
+body[data-theme="day"] .filter {
+  color: #f4dce9;
+  border-color: #8c5d80;
+}
+body[data-theme="day"] .creator-panel {
+  background: linear-gradient(135deg, #39203b, #202e48 65%, #173d39);
+  border-color: #a985b455;
+}
+body[data-theme="day"] .watch-sheet {
+  background: #29192d;
+  color: var(--text);
+  border-color: var(--line);
+}
+body[data-theme="day"] .close-btn {
+  background: var(--panel);
+  color: var(--text);
+}
+body[data-theme="day"] footer {
+  color: #cbb5c9;
+  border-color: var(--line);
+}
+body[data-theme="day"] .brand-small {
+  color: var(--gold);
+}
