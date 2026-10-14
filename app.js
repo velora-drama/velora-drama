@@ -32,7 +32,7 @@ heroKicker:"A MAEVRIN ORIGINAL", heroSub:"A love worth risking everything for.",
     openStudio:"Open Creator Studio to add a video.", genres:{romance:"Romance",revenge:"Revenge",mystery:"Mystery",fantasy:"Fantasy"}
   },
   ko: {
-    creator:"제작자 스튜디오", tagline:"다음 정주행 드라마", heroTitle:"짧은 드라마.<br><em>깊은 감정.</em>",
+    creator:“크리에이터 스튜디오”, tagline:“당신의 새로운 중독”, heroTitle:“짧은 드라마.깊은 감정.”, posterTitle:“한밤중 이후”,
     heroDesc:"오리지널 스토리, 잊을 수 없는 캐릭터, 다음 에피소드.", browse:"드라마 둘러보기", curated:"당신을 위한 추천",
     popular:"인기 스토리", demoNote:"데모 버전", all:"전체", romance:"로맨스", revenge:"복수", mystery:"미스터리", fantasy:"판타지",
     empty:"이 카테고리에는 아직 드라마가 없습니다.", studio:"나만의 작업 공간", creatorTitle:"제작자 스튜디오",
