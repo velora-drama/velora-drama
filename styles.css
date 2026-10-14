@@ -487,3 +487,13 @@ body[data-theme="day"] footer {
 body[data-theme="day"] .brand-small {
   color: var(--gold);
 }
+
+/* MAEVRIN: читаемые названия постеров в дневной теме */
+body[data-theme="day"] .drama-card h3,
+body[data-theme="day"] .drama-card .drama-title,
+body[data-theme="day"] .poster-title,
+body[data-theme="day"] .cover-title {
+  color: #f1dce8;
+  opacity: 1;
+  text-shadow: 0 2px 12px rgba(18, 8, 20, 0.55);
+}
