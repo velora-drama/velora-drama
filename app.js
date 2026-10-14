@@ -12,6 +12,7 @@ heroKicker:"ОРИГИНАЛ MAEVRIN", heroSub:"Любовь, ради кото�
     footer:"Концепция независимой ИИ-дорамы · Только оригинальные истории", noVideo:"Видео серии ещё не добавлено",
     addVideoHint:"Добавь прямую ссылку на MP4 в студии автора.", nowWatching:"СЕЙЧАС СМОТРИШЬ", episodeOne:"Серия 1", previewLabel:"Тестовая версия",
     episode:"серия", episodes:"серии", episodeMany:"серий", added:"Дорама добавлена в этом браузере.", reset:"Демо-каталог восстановлен.",
+    newEpisodes:"НОВЫЕ СЕРИИ",
     invalidVideo:"Не удалось загрузить видео. Проверь прямую ссылку на файл MP4.", sampleDesc:"Оригинальная история скоро появится. Добавь видео через студию автора.",
     openStudio:"Открой студию автора, чтобы добавить видео.", genres:{romance:"Романтика",revenge:"Месть",mystery:"Тайны",fantasy:"Фэнтези"}
   },
@@ -28,6 +29,7 @@ heroKicker:"A MAEVRIN ORIGINAL", heroSub:"A love worth risking everything for.",
     footer:"An independent AI drama concept · Original stories only", noVideo:"No episode video attached yet",
     addVideoHint:"Use Creator Studio to add a direct MP4 URL.", nowWatching:"NOW WATCHING", episodeOne:"Episode 1", previewLabel:"Preview build",
     episode:"episode", episodes:"episodes", episodeMany:"episodes", added:"Drama added in this browser.", reset:"Demo catalog restored.",
+    newEpisodes:"NEW EPISODES",
     invalidVideo:"Could not load the video. Check that the URL points directly to an MP4 file.", sampleDesc:"An original story is coming soon. Add a video in Creator Studio.",
     openStudio:"Open Creator Studio to add a video.", genres:{romance:"Romance",revenge:"Revenge",mystery:"Mystery",fantasy:"Fantasy"}
   },
@@ -42,6 +44,7 @@ heroKicker:"A MAEVRIN ORIGINAL", heroSub:"A love worth risking everything for.",
     footer:"독립 AI 드라마 콘셉트 · 오리지널 스토리", noVideo:"아직 에피소드 영상이 없습니다",
     addVideoHint:"제작자 스튜디오에서 직접 MP4 URL을 추가하세요.", nowWatching:"시청 중", episodeOne:"1화", previewLabel:"미리보기",
     episode:"화", episodes:"화", episodeMany:"화", added:"이 브라우저에 드라마가 추가되었습니다.", reset:"데모 카탈로그가 복원되었습니다.",
+    newEpisodes:"새로운 에피소드",
     invalidVideo:"영상을 불러올 수 없습니다. MP4 파일의 직접 URL인지 확인하세요.", sampleDesc:"오리지널 스토리가 곧 공개됩니다. 제작자 스튜디오에서 영상을 추가하세요.",
     openStudio:"영상을 추가하려면 제작자 스튜디오를 여세요.", genres:{romance:"로맨스",revenge:"복수",mystery:"미스터리",fantasy:"판타지"}
   }
