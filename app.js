@@ -1,7 +1,7 @@
 const translations = {
   ru: {
     creator:"Студия автора", tagline:"ТВОЯ НОВАЯ ЗАВИСИМОСТЬ", heroTitle:"Короткие дорамы.<br><em>Большие чувства.</em>",
-posterTitle:“ПОСЛЕПОЛУНОЧИ”,
+posterTitle:"ПОСЛЕ<br><i>ПОЛУНОЧИ</i>",
 heroKicker:"ОРИГИНАЛ MAEVRIN", heroSub:"Любовь, ради которой стоит рискнуть всем.",
     heroDesc:"Оригинальные истории, незабываемые герои и ещё одна серия.", browse:"Смотреть дорамы", curated:"ПОДБОРКА ДЛЯ ТЕБЯ",
     popular:"Популярные истории", demoNote:"Демо-версия", all:"Все", romance:"Романтика", revenge:"Месть", mystery:"Тайны", fantasy:"Фэнтези",
@@ -18,7 +18,7 @@ heroKicker:"ОРИГИНАЛ MAEVRIN", heroSub:"Любовь, ради кото�
   },
   en: {
     creator:"Creator studio", tagline:"YOUR NEXT OBSESSION", heroTitle:"Short dramas.<br><em>Big feelings.</em>",
-posterTitle:“AFTERMIDNIGHT”,
+posterTitle:"AFTER<br><i>MIDNIGHT</i>",
 heroKicker:"A MAEVRIN ORIGINAL", heroSub:"A love worth risking everything for.",
     heroDesc:"Original stories, unforgettable characters, one more episode.", browse:"Explore dramas", curated:"CURATED FOR YOU",
     popular:"Popular stories", demoNote:"Starter demo", all:"All", romance:"Romance", revenge:"Revenge", mystery:"Mystery", fantasy:"Fantasy",
@@ -34,8 +34,9 @@ heroKicker:"A MAEVRIN ORIGINAL", heroSub:"A love worth risking everything for.",
     openStudio:"Open Creator Studio to add a video.", genres:{romance:"Romance",revenge:"Revenge",mystery:"Mystery",fantasy:"Fantasy"}
   },
   ko: {
-    creator:“크리에이터 스튜디오”, tagline:“당신의 새로운 중독”, heroTitle:“짧은 드라마.깊은 감정.”, posterTitle:“한밤중 이후”,
-    heroDesc:"오리지널 스토리, 잊을 수 없는 캐릭터, 다음 에피소드.", browse:"드라마 둘러보기", curated:"당신을 위한 추천",
+    creator:"크리에이터 스튜디오", tagline:"당신의 새로운 중독", heroTitle:"짧은 드라마.<br><em>깊은 감정.</em>", posterTitle:"한밤중 이후",
+heroKicker:"MAEVRIN 오리지널", heroSub:"모든 것을 걸 만한 사랑.",
+heroDesc:"오리지널 스토리, 잊을 수 없는 캐릭터, 다음 에피소드.", browse:"드라마 둘러보기", curated:"당신을 위한 추천",
     popular:"인기 스토리", demoNote:"데모 버전", all:"전체", romance:"로맨스", revenge:"복수", mystery:"미스터리", fantasy:"판타지",
     empty:"이 카테고리에는 아직 드라마가 없습니다.", studio:"나만의 작업 공간", creatorTitle:"제작자 스튜디오",
     localOnly:"이 기기에 저장됨", creatorHelp:"제목, 포스터 URL, 직접 연결되는 동영상 URL(MP4 권장)을 추가하세요. 이 데모는 현재 브라우저에만 저장되며 서버에 업로드되거나 다른 사용자에게 공개되지 않습니다.",
