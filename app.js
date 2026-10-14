@@ -1,6 +1,7 @@
 const translations = {
   ru: {
     creator:"Студия автора", tagline:"ТВОЯ НОВАЯ ЗАВИСИМОСТЬ", heroTitle:"Короткие дорамы.<br><em>Большие чувства.</em>",
+posterTitle:“ПОСЛЕПОЛУНОЧИ”,
 heroKicker:"ОРИГИНАЛ MAEVRIN", heroSub:"Любовь, ради которой стоит рискнуть всем.",
     heroDesc:"Оригинальные истории, незабываемые герои и ещё одна серия.", browse:"Смотреть дорамы", curated:"ПОДБОРКА ДЛЯ ТЕБЯ",
     popular:"Популярные истории", demoNote:"Демо-версия", all:"Все", romance:"Романтика", revenge:"Месть", mystery:"Тайны", fantasy:"Фэнтези",
@@ -16,6 +17,7 @@ heroKicker:"ОРИГИНАЛ MAEVRIN", heroSub:"Любовь, ради кото�
   },
   en: {
     creator:"Creator studio", tagline:"YOUR NEXT OBSESSION", heroTitle:"Short dramas.<br><em>Big feelings.</em>",
+posterTitle:“AFTERMIDNIGHT”,
 heroKicker:"A MAEVRIN ORIGINAL", heroSub:"A love worth risking everything for.",
     heroDesc:"Original stories, unforgettable characters, one more episode.", browse:"Explore dramas", curated:"CURATED FOR YOU",
     popular:"Popular stories", demoNote:"Starter demo", all:"All", romance:"Romance", revenge:"Revenge", mystery:"Mystery", fantasy:"Fantasy",
