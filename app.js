@@ -1,6 +1,7 @@
 const translations = {
   ru: {
     creator:"Студия автора", tagline:"ТВОЯ НОВАЯ ЗАВИСИМОСТЬ", heroTitle:"Короткие дорамы.<br><em>Большие чувства.</em>",
+heroKicker:"ОРИГИНАЛ MAEVRIN", heroSub:"Любовь, ради которой стоит рискнуть всем.",
     heroDesc:"Оригинальные истории, незабываемые герои и ещё одна серия.", browse:"Смотреть дорамы", curated:"ПОДБОРКА ДЛЯ ТЕБЯ",
     popular:"Популярные истории", demoNote:"Демо-версия", all:"Все", romance:"Романтика", revenge:"Месть", mystery:"Тайны", fantasy:"Фэнтези",
     empty:"В этой категории пока нет дорам.", studio:"ТВОЯ ТВОРЧЕСКАЯ МАСТЕРСКАЯ", creatorTitle:"Студия автора",
@@ -15,6 +16,7 @@ const translations = {
   },
   en: {
     creator:"Creator studio", tagline:"YOUR NEXT OBSESSION", heroTitle:"Short dramas.<br><em>Big feelings.</em>",
+heroKicker:"A MAEVRIN ORIGINAL", heroSub:"A love worth risking everything for.",
     heroDesc:"Original stories, unforgettable characters, one more episode.", browse:"Explore dramas", curated:"CURATED FOR YOU",
     popular:"Popular stories", demoNote:"Starter demo", all:"All", romance:"Romance", revenge:"Revenge", mystery:"Mystery", fantasy:"Fantasy",
     empty:"No dramas in this category yet.", studio:"YOUR PRIVATE WORKSPACE", creatorTitle:"Creator studio",
