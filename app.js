@@ -474,26 +474,39 @@ $("resetDemo").addEventListener("click",()=>{
 });
 applyLanguage();
 
-// MAEVRIN — day/night theme switcher
-(()=>{
-  const toggle = document.getElementById("themeToggle");
-  if(!toggle) return;
-  let currentTheme = "night";
-  try {
-    currentTheme = localStorage.getItem("velora-theme") || "night";
-  } catch(error) {}
-  function applyTheme(theme){
-    currentTheme = theme;
-    document.body.dataset.theme = theme;
-    toggle.textContent = theme === "day" ? "🌙" : "☀️";
-    toggle.setAttribute("aria-label",theme === "day" ? "Switch to night theme" : "Switch to day theme");
-    toggle.title = theme === "day" ? "Ночная тема" : "Дневная тема";
-    try {
-      localStorage.setItem("velora-theme",theme);
-    } catch(error) {}
-  }
-  applyTheme(currentTheme);
-  toggle.addEventListener("click",()=>{
-    applyTheme(currentTheme === "day" ? "night" : "day");
-  });
+/* MAEVRIN — day/night theme switcher */
+(() => {
+const toggle = document.getElementById(“themeToggle”);
+if (!toggle) return;
+
+function applyTheme(theme) {
+document.body.dataset.theme = theme;
+toggle.textContent = theme === “day” ? “🌙” : “☀️”;
+toggle.setAttribute(
+“aria-label”,
+theme === “day” ? “Switch to night theme” : “Switch to day theme”
+);
+toggle.title = theme === “day” ? “Ночная тема” : “Дневная тема”;
+
+try {
+  localStorage.setItem("velora-theme", theme);
+} catch (error) {}
+
+}
+
+let savedTheme = “night”;
+
+try {
+savedTheme = localStorage.getItem(“velora-theme”) || “night”;
+} catch (error) {}
+
+applyTheme(savedTheme);
+
+toggle.addEventListener(“click”, () => {
+const nextTheme =
+document.body.dataset.theme === “day” ? “night” : “day”;
+
+applyTheme(nextTheme);
+
+});
 })();
