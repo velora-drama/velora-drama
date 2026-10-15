@@ -721,3 +721,62 @@ body[data-theme="day"] .card-title {
     gap: 18px;
   }
 }
+
+/* MAEVRIN: portrait phone layout fix */
+@media screen and (max-width: 600px) {
+  header.topbar {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    padding: 16px;
+    min-width: 0;
+  }
+
+  header.topbar .brand {
+    align-self: center;
+    width: auto;
+    max-width: 100%;
+  }
+
+  header.topbar .top-actions {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    min-width: 0;
+  }
+
+  header.topbar .top-actions > * {
+    flex: 0 1 auto;
+    min-width: 0;
+  }
+
+  header.topbar .top-actions .ghost-btn {
+    white-space: normal;
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .filters {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    max-width: 100%;
+    padding: 4px 2px 12px;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .filters > * {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+  }
+
+  .filters::-webkit-scrollbar {
+    display: none;
+  }
+}
