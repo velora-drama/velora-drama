@@ -606,3 +606,57 @@ body[data-theme="day"] .card-title {
     transition: none;
   }
 }
+
+/* MAEVRIN: elegant favorites control */
+.favorite-toggle {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 5;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: 1px solid rgba(232, 202, 160, 0.48);
+  border-radius: 14px;
+  background: rgba(19, 10, 24, 0.78);
+  color: #f3dfca;
+  font-size: 25px;
+  line-height: 1;
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.favorite-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 18px rgba(194, 113, 160, 0.32);
+}
+
+.favorite-toggle.is-favorite {
+  color: #ffd1df;
+  background: rgba(111, 30, 72, 0.88);
+  border-color: rgba(255, 190, 218, 0.8);
+  box-shadow: 0 0 16px rgba(200, 70, 130, 0.3);
+}
+
+.favorite-toggle:active {
+  transform: scale(0.92);
+}
+
+.favorite-toggle:focus-visible {
+  outline: 2px solid #e8c59b;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .favorite-toggle {
+    transition: none;
+  }
+}
