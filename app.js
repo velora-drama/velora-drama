@@ -423,6 +423,32 @@ $("adminToggle").addEventListener("click",()=>{
   $("creatorPanel").classList.toggle("hidden");
   if(!$("creatorPanel").classList.contains("hidden")) $("creatorPanel").scrollIntoView({behavior:"smooth",block:"start"});
 });
+
+function showFavorites() {
+  $("catalog").classList.add("hidden");
+  $("creatorPanel").classList.add("hidden");
+  $("favoritesPanel").classList.remove("hidden");
+
+  renderFavorites();
+  $("favoritesPanel").scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+}
+
+function showCatalog() {
+  $("favoritesPanel").classList.add("hidden");
+  $("catalog").classList.remove("hidden");
+
+  $("catalog").scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+}
+
+$("favoritesBtn").addEventListener("click", showFavorites);
+$("backToCatalog").addEventListener("click", showCatalog);
+
 $("dramaForm").addEventListener("submit",e=>{
   e.preventDefault();
   const title = $("titleInput").value.trim();
