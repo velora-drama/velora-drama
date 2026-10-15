@@ -476,37 +476,28 @@ applyLanguage();
 
 /* MAEVRIN — day/night theme switcher */
 (() => {
-const toggle = document.getElementById(“themeToggle”);
-if (!toggle) return;
-
-function applyTheme(theme) {
-document.body.dataset.theme = theme;
-toggle.textContent = theme === “day” ? “🌙” : “☀️”;
-toggle.setAttribute(
-“aria-label”,
-theme === “day” ? “Switch to night theme” : “Switch to day theme”
-);
-toggle.title = theme === “day” ? “Ночная тема” : “Дневная тема”;
-
-try {
-  localStorage.setItem("velora-theme", theme);
-} catch (error) {}
-
-}
-
-let savedTheme = “night”;
-
-try {
-savedTheme = localStorage.getItem(“velora-theme”) || “night”;
-} catch (error) {}
-
-applyTheme(savedTheme);
-
-toggle.addEventListener(“click”, () => {
-const nextTheme =
-document.body.dataset.theme === “day” ? “night” : “day”;
-
-applyTheme(nextTheme);
-
-});
+  const toggle = document.getElementById("themeToggle");
+  if (!toggle) return;
+  function applyTheme(theme) {
+    document.body.dataset.theme = theme;
+    toggle.textContent = theme === "day" ? "🌙" : "☀️";
+    toggle.setAttribute(
+      "aria-label",
+      theme === "day" ? "Switch to night theme" : "Switch to day theme"
+    );
+    toggle.title = theme === "day" ? "Ночная тема" : "Дневная тема";
+    try {
+      localStorage.setItem("velora-theme", theme);
+    } catch (error) {}
+  }
+  let savedTheme = "night";
+  try {
+    savedTheme = localStorage.getItem("velora-theme") || "night";
+  } catch (error) {}
+  applyTheme(savedTheme);
+  toggle.addEventListener("click", () => {
+    const nextTheme =
+      document.body.dataset.theme === "day" ? "night" : "day";
+    applyTheme(nextTheme);
+  });
 })();
