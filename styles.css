@@ -515,3 +515,22 @@ text-shadow: 0 1px 8px rgba(12, 5, 15, 0.3);
 body[data-theme=“day”] .section-heading h2 {
 text-shadow: 0 2px 10px rgba(12, 5, 15, 0.25);
 }
+
+/* MAEVRIN: читаемость текста в дневной теме */
+body[data-theme="day"] .section-heading h2,
+body[data-theme="day"] .card-title,
+body[data-theme="day"] .card-desc,
+body[data-theme="day"] .card-meta,
+body[data-theme="day"] .empty-state {
+  color: #f4e7f0;
+  opacity: 1;
+}
+
+body[data-theme="day"] .section-heading h2 {
+  font-weight: 700;
+  text-shadow: 0 2px 10px rgba(12, 5, 15, 0.25);
+}
+
+body[data-theme="day"] .card-title {
+  font-weight: 700;
+}
