@@ -724,14 +724,19 @@ body[data-theme="day"] .card-title {
 
 /* MAEVRIN: portrait phone layout fix */
 @media screen and (max-width: 600px) {
+  
   header.topbar {
     display: flex;
     flex-direction: column;
     align-items: stretch;
+    justify-content: center;
     gap: 14px;
+    height: auto;
+    min-height: 0;
     padding: 16px;
     min-width: 0;
   }
+
 
   header.topbar .brand {
     align-self: center;
