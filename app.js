@@ -299,16 +299,33 @@ function closeDrama(){
   $("videoPlayer").pause();
   document.body.style.overflow = "";
 }
-$("dramaGrid").addEventListener("click",e=>{
+
+$("dramaGrid").addEventListener("click", e => {
+  const favoriteButton = e.target.closest(".favorite-toggle");
+
+  if (favoriteButton) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    toggleMaevrinFavorite(favoriteButton.dataset.favoriteId);
+    renderDramas();
+    return;
+  }
+
   const card = e.target.closest("[data-id]");
-  if(card) openDrama(card.dataset.id);
+  if (card) openDrama(card.dataset.id);
 });
-$("dramaGrid").addEventListener("keydown",e=>{
-  if((e.key==="Enter"||e.key===" ")&&e.target.matches("[data-id]")){
+
+$("dramaGrid").addEventListener("keydown", e => {
+  if (
+    (e.key === "Enter" || e.key === " ") &&
+    e.target.matches("[data-id]")
+  ) {
     e.preventDefault();
     openDrama(e.target.dataset.id);
   }
 });
+
 $("closeModal").addEventListener("click",closeDrama);
 $("modalBackdrop").addEventListener("click",closeDrama);
 document.addEventListener("keydown",e=>{if(e.key==="Escape")closeDrama();});
