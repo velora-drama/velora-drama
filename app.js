@@ -261,6 +261,70 @@ function renderDramas() {
   $("emptyState").classList.toggle("hidden", list.length !== 0);
 }
 
+function renderFavorites() {
+  const list = dramas.filter(d =>
+    maevrinFavorites.includes(String(d.id))
+  );
+
+  $("favoritesGrid").innerHTML = list.map((d, i) => {
+    const poster = safeUrl(d.poster);
+    const artClass = d.art || ["art1", "art2", "art3", "art4"][i % 4];
+    const title = d["title_" + currentLanguage] || d.title;
+    const description =
+      d["description_" + currentLanguage] ||
+      d.description ||
+      t("sampleDesc");
+
+    const genre =
+      translations[currentLanguage].genres[d.genre] || d.genre;
+
+    const artText = title.split(/\s+/)
+      .slice(0, 2)
+      .map(escapeHtml)
+      .join("<br>");
+
+    const posterMarkup = poster
+      ? `<img class="poster-image" src="${escapeHtml(poster)}" alt="" loading="lazy" onerror="this.remove()">`
+      : "";
+
+    return `
+      <article class="drama-card" tabindex="0" role="button"
+        aria-label="${escapeHtml(title)}"
+        data-id="${escapeHtml(d.id)}">
+
+        <div class="poster ${artClass}">
+          ${posterMarkup}
+          <div class="poster-overlay"></div>
+
+          <button
+            class="favorite-toggle is-favorite"
+            type="button"
+            data-favorite-id="${escapeHtml(d.id)}"
+            aria-label="Убрать из избранного"
+            aria-pressed="true"
+            title="Убрать из избранного">
+            <span aria-hidden="true">♥</span>
+          </button>
+
+          <div class="poster-copy">
+            <div class="poster-genre">${escapeHtml(genre)}</div>
+            <div class="poster-title">${artText}</div>
+          </div>
+        </div>
+
+        <div class="card-title">${escapeHtml(title)}</div>
+        <div class="card-desc">${escapeHtml(description)}</div>
+
+        <div class="card-meta">
+          <span>${d.episodes || 1} ${t("episodeMany")}</span>
+        </div>
+      </article>
+    `;
+  }).join("");
+
+  $("favoritesEmpty").classList.toggle("hidden", list.length !== 0);
+}
+
 function showToast(message){
   const old = document.querySelector(".toast");
   if(old) old.remove();
