@@ -364,7 +364,8 @@ function closeDrama(){
   document.body.style.overflow = "";
 }
 
-$("dramaGrid").addEventListener("click", e => {
+
+function handleDramaGridClick(e) {
   const favoriteButton = e.target.closest(".favorite-toggle");
 
   if (favoriteButton) {
@@ -373,14 +374,20 @@ $("dramaGrid").addEventListener("click", e => {
 
     toggleMaevrinFavorite(favoriteButton.dataset.favoriteId);
     renderDramas();
+    renderFavorites();
     return;
   }
 
   const card = e.target.closest("[data-id]");
   if (card) openDrama(card.dataset.id);
-});
+}
 
-$("dramaGrid").addEventListener("keydown", e => {
+$("dramaGrid").addEventListener("click", handleDramaGridClick);
+$("favoritesGrid").addEventListener("click", handleDramaGridClick);
+
+
+
+function handleDramaGridKeydown(e) {
   if (
     (e.key === "Enter" || e.key === " ") &&
     e.target.matches("[data-id]")
@@ -388,7 +395,11 @@ $("dramaGrid").addEventListener("keydown", e => {
     e.preventDefault();
     openDrama(e.target.dataset.id);
   }
-});
+}
+
+$("dramaGrid").addEventListener("keydown", handleDramaGridKeydown);
+$("favoritesGrid").addEventListener("keydown", handleDramaGridKeydown);
+
 
 $("closeModal").addEventListener("click",closeDrama);
 $("modalBackdrop").addEventListener("click",closeDrama);
