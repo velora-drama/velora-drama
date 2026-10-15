@@ -140,27 +140,127 @@ function applyLanguage(){
     const key = el.dataset.i18n;
     if(translations[currentLanguage][key]) el.innerHTML = translations[currentLanguage][key];
   });
+  
+const MAEVRIN_FAVORITES_KEY = "maevrin_favorites";
+
+function loadMaevrinFavorites() {
+  try {
+    const saved = JSON.parse(
+      localStorage.getItem(MAEVRIN_FAVORITES_KEY) || "[]"
+    );
+    return Array.isArray(saved) ? saved.map(String) : [];
+  } catch {
+    return [];
+  }
+}
+
+let maevrinFavorites = loadMaevrinFavorites();
+
+function toggleMaevrinFavorite(id) {
+  id = String(id);
+
+  if (maevrinFavorites.includes(id)) {
+    maevrinFavorites = maevrinFavorites.filter(item => item !== id);
+  } else {
+    maevrinFavorites.push(id);
+  }
+
+  try {
+    localStorage.setItem(
+      MAEVRIN_FAVORITES_KEY,
+      JSON.stringify(maevrinFavorites)
+    );
+  } catch (error) {
+    console.error("Не удалось сохранить избранное:", error);
+  }
+}
+
   renderDramas();
 }
-function renderDramas(){
-  const list = dramas.filter(d=>currentGenre==="all"||d.genre===currentGenre);
-  $("dramaGrid").innerHTML = list.map((d,i)=>{
+
+function renderDramas() {
+  const list = dramas.filter(
+    d => currentGenre === "all" || d.genre === currentGenre
+  );
+
+  $("dramaGrid").innerHTML = list.map((d, i) => {
     const poster = safeUrl(d.poster);
-    const artClass = d.art || ["art1","art2","art3","art4"][i%4];
+    const artClass = d.art || ["art1", "art2", "art3", "art4"][i % 4];
     const title = d["title_" + currentLanguage] || d.title;
-    const description = d["description_" + currentLanguage] || d.description || t("sampleDesc");
-    const artText = title.split(/\s+/).slice(0,2).map(escapeHtml).join("<br>");
-    const genre = translations[currentLanguage].genres[d.genre] || d.genre;
-    const videoLabel = currentLanguage === "ru" ? "Видео" : currentLanguage === "ko" ? "영상" : currentLanguage === "ja" ? "動画" : currentLanguage === "es" ? "Vídeo" : currentLanguage === "pt" ? "Vídeo" : "Video";
-    const posterMarkup = poster ? `<img class="poster-image" src="${escapeHtml(poster)}" alt="" loading="lazy" onerror="this.remove()">` : "";
-    return `<article class="drama-card" tabindex="0" role="button" aria-label="${escapeHtml(title)}" data-id="${escapeHtml(d.id)}">
-      <div class="poster ${artClass}">${posterMarkup}<div class="poster-overlay"></div><div class="poster-copy"><div class="poster-genre">${escapeHtml(genre)}</div><div class="poster-title">${artText}</div></div></div>
-      <div class="card-title">${escapeHtml(title)}</div><div class="card-desc">${escapeHtml(description)}</div>
-      <div class="card-meta"><span>${d.episodes||1} ${t("episodeMany")}</span><span>▶ ${d.video ? videoLabel : (currentLanguage === "ru" ? "Анонс" : currentLanguage === "ko" ? "미리보기" : currentLanguage === "ja" ? "予告" : currentLanguage === "es" ? "Avance" : currentLanguage === "pt" ? "Prévia" : "Preview")}</span></div>
-    </article>`;
+    const description =
+      d["description_" + currentLanguage] ||
+      d.description ||
+      t("sampleDesc");
+
+    const artText = title.split(/\s+/).slice(0, 2)
+      .map(escapeHtml).join("<br>");
+
+    const genre =
+      translations[currentLanguage].genres[d.genre] || d.genre;
+
+    const isFavorite = maevrinFavorites.includes(String(d.id));
+
+    const favoriteLabel = isFavorite
+      ? (currentLanguage === "ru" ? "Убрать из избранного" : "Remove from favorites")
+      : (currentLanguage === "ru" ? "В избранное" : "Add to favorites");
+
+    const videoLabel =
+      currentLanguage === "ru" ? "Видео" :
+      currentLanguage === "ko" ? "영상" :
+      currentLanguage === "ja" ? "動画" :
+      currentLanguage === "es" ? "Vídeo" :
+      currentLanguage === "pt" ? "Vídeo" : "Video";
+
+    const previewLabel =
+      currentLanguage === "ru" ? "Анонс" :
+      currentLanguage === "ko" ? "미리보기" :
+      currentLanguage === "ja" ? "予告" :
+      currentLanguage === "es" ? "Avance" :
+      currentLanguage === "pt" ? "Prévia" : "Preview";
+
+    const posterMarkup = poster
+      ? `<img class="poster-image" src="${escapeHtml(poster)}" alt="" loading="lazy" onerror="this.remove()">`
+      : "";
+
+    return `
+      <article class="drama-card" tabindex="0" role="button"
+        aria-label="${escapeHtml(title)}"
+        data-id="${escapeHtml(d.id)}">
+
+        <div class="poster ${artClass}">
+          ${posterMarkup}
+          <div class="poster-overlay"></div>
+
+          <button
+            class="favorite-toggle${isFavorite ? " is-favorite" : ""}"
+            type="button"
+            data-favorite-id="${escapeHtml(d.id)}"
+            aria-label="${favoriteLabel}"
+            aria-pressed="${isFavorite}"
+            title="${favoriteLabel}">
+            <span aria-hidden="true">${isFavorite ? "♥" : "♡"}</span>
+          </button>
+
+          <div class="poster-copy">
+            <div class="poster-genre">${escapeHtml(genre)}</div>
+            <div class="poster-title">${artText}</div>
+          </div>
+        </div>
+
+        <div class="card-title">${escapeHtml(title)}</div>
+        <div class="card-desc">${escapeHtml(description)}</div>
+
+        <div class="card-meta">
+          <span>${d.episodes || 1} ${t("episodeMany")}</span>
+          <span>▶ ${d.video ? videoLabel : previewLabel}</span>
+        </div>
+      </article>
+    `;
   }).join("");
-  $("emptyState").classList.toggle("hidden",list.length!==0);
+
+  $("emptyState").classList.toggle("hidden", list.length !== 0);
 }
+
 function showToast(message){
   const old = document.querySelector(".toast");
   if(old) old.remove();
